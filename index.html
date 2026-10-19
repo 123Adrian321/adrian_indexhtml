@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanulmányi Osztály | Nyitvatartás és Ügyintézés</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --primary-light: #3b82f6;
+            --accent: #f59e0b;
+            --success: #10b981;
+            --danger: #ef4444;
+            --bg-light: #f8fafc;
+            --surface: #ffffff;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --radius: 16px;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+            --shadow-lg: 0 20px 30px -10px rgba(30, 58, 138, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* HEADER & NAV */
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            background: var(--primary);
+            color: white;
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-size: 1.1rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary-light);
+        }
+
+        /* HERO SZEKCIÓ */
+        .hero {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #eff6ff;
+            color: var(--primary);
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            border: 1px solid #bfdbfe;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            line-height: 1.2;
+            color: var(--primary);
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 14px rgba(30, 58, 138, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--border);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            background: #f1f5f9;
+        }
+
+        /* 1. KÉP - HERO KÉP */
+        .hero-image-wrapper {
+            position: relative;
+        }
+
+        .hero-img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* ÉLŐ ÁLLAPOT JELZŐ (STATUS BAR) */
+        .live-status-bar {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .status-card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .pulse-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            display: inline-block;
+            position: relative;
+        }
+
+        .pulse-dot::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            border-radius: 50%;
+            animation: pulse 1.8s infinite;
+        }
+
+        .status-open .pulse-dot {
+            background-color: var(--success);
+        }
+        .status-open .pulse-dot::after {
+            background-color: var(--success);
+        }
+
+        .status-closed .pulse-dot {
+            background-color: var(--danger);
+        }
+        .status-closed .pulse-dot::after {
+            background-color: var(--danger);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(2.5); opacity: 0; }
+        }
+
+        /* NYITVATARTÁS SZEKCIÓ */
+        .section-container {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        .schedule-table-wrapper {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        .schedule-table th {
+            padding: 1rem;
+            background: #f8fafc;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.95rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .schedule-table td {
+            padding: 1.1rem 1rem;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.95rem;
+        }
+
+        .schedule-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .today-row {
+            background: #eff6ff !important;
+            font-weight: 700;
+        }
+
+        .badge-open {
+            background: #dcfce7;
+            color: #15803d;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .badge-closed {
+            background: #fee2e2;
+            color: #b91c1c;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* 2. KÉP - KIEGÉSZÍTŐ INFO KÁRTYA KÉPPEL */
+        .schedule-info-card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .schedule-info-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .info-card-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .urgent-note {
+            background: #fffbeb;
+            border-left: 4px solid var(--accent);
+            padding: 0.8rem;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.9rem;
+            color: #92400e;
+        }
+
+        /* SORSZÁMHÚZÓ ÉS IDŐPONTFOGLALÓ RENDSZER (INTERAKTÍV) */
+        .interactive-zone {
+            background: linear-gradient(135deg, #1e3a8a, #2563eb);
+            border-radius: 24px;
+            padding: 3rem;
+            color: white;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .ticket-form {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            color: var(--text-dark);
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .ticket-form h3 {
+            color: var(--primary);
+            font-size: 1.3rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .form-group input, .form-group select {
+            padding: 0.8rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+
+        /* DIGITÁLIS SORSZÁM JELZŐ PANEL */
+        .ticket-display {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            text-align: center;
+        }
+
+        .ticket-number {
+            font-size: 4rem;
+            font-weight: 800;
+            color: #fbbf24;
+            letter-spacing: 2px;
+            margin: 0.5rem 0;
+            font-family: monospace;
+        }
+
+        /* 3. KÉP ÉS GYIK / SZOLGÁLTATÁSOK */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: var(--surface);
+            padding: 1.8rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            transition: transform 0.2s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .office-highlight-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            margin-top: 4rem;
+            align-items: center;
+        }
+
+        .office-img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        /* GYIK ACCORDION */
+        .faq-item {
+            background: var(--surface);
+            border-radius: 12px;
+            margin-bottom: 0.8rem;
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            text-align: left;
+            padding: 1.2rem;
+            background: none;
+            border: none;
+            outline: none;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--primary);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 1.2rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .faq-item.active .faq-answer {
+            padding-bottom: 1.2rem;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 3rem 1.5rem 1.5rem;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .footer-column h4 {
+            color: white;
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-column p, .footer-column a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 0.6rem;
+            display: block;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 1.5rem auto 0;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        /* RESZPONZÍV NÉZET */
+        @media (max-width: 900px) {
+            .hero, .schedule-grid, .interactive-zone, .office-highlight-wrapper {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            nav ul {
+                display: none; /* Mobilon leegyszerűsített */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- FEJLÉC ÉS NAVIGÁCIÓ -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-icon">🎓</span>
+                <span>TO-Portál</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#nyitvatartas">Nyitvatartás</a></li>
+                    <li><a href="#ugyintezes">Ügyintézés</a></li>
+                    <li><a href="#sorszam">Digitális Sorszám</a></li>
+                    <li><a href="#gyik">GYIK</a></li>
+                    <li><a href="#kapcsolat">Kapcsolat</a></li>
+                </ul>
+            </nav>
+            <a href="#sorszam" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Sorszámhúzás</a>
+        </div>
+    </header>
+
+    <!-- HERO SZEKCIÓ (1. KÉP) -->
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-badge">🏛️ Tanulmányi és Oktatásszervezési Iroda</div>
+                <h1>Minden tanulmányi ügy egy helyen, egyszerűen.</h1>
+                <p>Üdvözöljük a Tanulmányi Osztály felületén! Tájékozódjon a nyitvatartási időről, foglaljon online sorszámot a személyes ügyintézéshez, vagy intézze igazolásait elektronikus úton.</p>
+                <div class="hero-actions">
+                    <a href="#nyitvatartas" class="btn btn-primary">Nyitvatartási idők megtekintése</a>
+                    <a href="#sorszam" class="btn btn-outline">Sorszám igénylése</a>
+                </div>
+            </div>
+            <div class="hero-image-wrapper">
+                <!-- 1. KÉP: Egyetemi / Iskolai campus és diákok -->
+                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80" alt="Iskola főépület és diákok" class="hero-img">
+            </div>
+        </section>
+
+        <!-- VALÓS IDEJŰ ÁLLAPOT JELZŐ (JAVASCRIPT VEZÉRELT) -->
+        <section class="live-status-bar">
+            <div class="status-card" id="statusCard">
+                <div class="status-indicator" id="statusIndicator">
+                    <span class="pulse-dot"></span>
+                    <div>
+                        <strong id="statusTitle" style="font-size: 1.1rem; display: block;">Állapot ellenőrzése...</strong>
+                        <span id="statusSubtitle" style="color: var(--text-muted); font-size: 0.9rem;">Kérjük várjon...</span>
+                    </div>
+                </div>
+                <div style="text-align: right;">
+                    <span style="font-size: 0.85rem; color: var(--text-muted); display: block;">Helyszín:</span>
+                    <strong>Főépület, Földszint 12-es szoba (A szárny)</strong>
+                </div>
+            </div>
+        </section>
+
+        <!-- HETI NYITVATARTÁSI TÁBLÁZAT (2. KÉP) -->
+        <section class="section-container" id="nyitvatartas">
+            <div class="section-header">
+                <h2>Részletes Ügyfélfogadási Rend</h2>
+                <p>Kérjük, érkezés előtt ellenőrizze az adott napra vonatkozó félfogadási idősávokat!</p>
+            </div>
+
+            <div class="schedule-grid">
+                <!-- Táblázat -->
+                <div class="schedule-table-wrapper">
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th>Nap</th>
+                                <th>Személyes ügyfélfogadás</th>
+                                <th>Telefonos ügyfélszolgálat</th>
+                                <th>Státusz</th>
+                            </tr>
+                        </thead>
+                        <tbody id="scheduleBody">
+                            <tr data-day="1">
+                                <td><strong>Hétfő</strong></td>
+                                <td>08:30 – 12:00</td>
+                                <td>13:00 – 15:30</td>
+                                <td><span class="badge-open">Fogadónap</span></td>
+                            </tr>
+                            <tr data-day="2">
+                                <td><strong>Kedd</strong></td>
+                                <td>13:00 – 16:30</td>
+                                <td>09:00 – 12:00</td>
+                                <td><span class="badge-open">Fogadónap</span></td>
+                            </tr>
+                            <tr data-day="3">
+                                <td><strong>Szerda</strong></td>
+                                <td>08:30 – 12:00</td>
+                                <td>13:00 – 15:30</td>
+                                <td><span class="badge-open">Fogadónap</span></td>
+                            </tr>
+                            <tr data-day="4">
+                                <td><strong>Csütörtök</strong></td>
+                                <td><em>Nincs személyes ügyfélfogadás</em></td>
+                                <td>09:00 – 15:00</td>
+                                <td><span class="badge-closed">Belső munkanap</span></td>
+                            </tr>
+                            <tr data-day="5">
+                                <td><strong>Péntek</strong></td>
+                                <td>08:30 – 12:00</td>
+                                <td>08:30 – 12:00</td>
+                                <td><span class="badge-open">Rövidített nap</span></td>
+                            </tr>
+                            <tr data-day="6">
+                                <td><strong>Szombat</strong></td>
+                                <td><em>Zárva</em></td>
+                                <td><em>Zárva</em></td>
+                                <td><span class="badge-closed">Hétvége</span></td>
+                            </tr>
+                            <tr data-day="0">
+                                <td><strong>Vasárnap</strong></td>
+                                <td><em>Zárva</em></td>
+                                <td><em>Zárva</em></td>
+                                <td><span class="badge-closed">Hétvége</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 2. KÉP: Ügyfélszolgálati pult és fontos megjegyzések -->
+                <div class="schedule-info-card">
+                    <img src="https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=600&q=80" alt="Iskolai ügyintézés és segítségnyújtás">
+                    <div class="info-card-content">
+                        <h4>Fontos tudnivalók</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">
+                            Csütörtöki napokon az iroda <strong>belső feldolgozói napot</strong> tart, a személyes ügyintézés szünetel.
+                        </p>
+                        <div class="urgent-note">
+                            📌 <strong>Vizsgaidőszakban:</strong> A nyitvatartás reggel 08:00-kor indul és délutáni pótfélfogadást biztosítunk!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SORSZÁMHÚZÓ ÉS DIGITÁLIS MONITOR (INTERAKTÍV MEGLEPETÉS) -->
+        <section class="section-container" id="sorszam">
+            <div class="interactive-zone">
+                <div>
+                    <h2 style="font-size: 2rem; margin-bottom: 1rem;">Húzzon virtuális sorszámot!</h2>
+                    <p style="opacity: 0.9; margin-bottom: 2rem;">
+                        Kerülje el a folyosói sorban állást! Adja meg adatait és az intézendő ügy típusát, rendszerünk pedig azonnal sorszámot és becsült várakozási időt rendel Önhöz.
+                    </p>
+                    
+                    <div class="ticket-display">
+                        <span style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Aktuálisan hívott szám</span>
+                        <div class="ticket-number" id="currentCalledNumber">A-104</div>
+                        <p id="ticketAlertText" style="font-size: 0.95rem; opacity: 0.9;">Kérjük, készítse elő a diákigazolványát vagy személyi iratait!</p>
+                    </div>
+                </div>
+
+                <!-- Sorszám igénylő űrlap -->
+                <form class="ticket-form" id="ticketForm" onsubmit="event.preventDefault(); generateTicket();">
+                    <h3>Online Sorszám Igénylés</h3>
+                    <div class="form-group">
+                        <label for="studentName">Hallgató / Tanuló Neve</label>
+                        <input type="text" id="studentName" required placeholder="pl. Kovács Dániel">
+                    </div>
+                    <div class="form-group">
+                        <label for="studentCode">Diákigazolvány / Neptun / OM azonosító</label>
+                        <input type="text" id="studentCode" required placeholder="pl. AB12CD">
+                    </div>
+                    <div class="form-group">
+                        <label for="topic">Ügytípus kiválasztása</label>
+                        <select id="topic" required>
+                            <option value="A">Diákigazolvány és matricák (A)</option>
+                            <option value="B">Jogviszony- és kreditigazolás (B)</option>
+                            <option value="C">Tantárgyfelvétel és vizsgaügyek (C)</option>
+                            <option value="D">Pénzügyek, ösztöndíjak (D)</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="justify-content: center; margin-top: 0.5rem;">
+                        Sorszám Kérése 🎫
+                    </button>
+                    <div id="ticketResult" style="display: none; padding: 1rem; background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 8px; color: #065f46; font-size: 0.95rem;"></div>
+                </form>
+            </div>
+        </section>
+
+        <!-- KIEGÉSZÍTŐ INFORMÁCIÓK ÉS 3. KÉP -->
+        <section class="section-container" id="ugyintezes">
+            <div class="section-header">
+                <h2>Gyakori Tanulmányi Ügyek</h2>
+                <p>Az alábbi feladatokkal fordulhat bizalommal a Tanulmányi Osztály munkatársaihoz</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🪪</div>
+                    <h3>Diákigazolvány</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Új igazolvány igénylése, ideiglenes igazolás kiadása, féléves érvényesítő matricák átvétele.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📄</div>
+                    <h3>Igazolások & Kivonatok</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Hallgatói jogviszony-igazolások hitelesítése családi pótlékhoz, diákhitelhez vagy munkavégzéshez.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📝</div>
+                    <h3>Kérvények & Felmentések</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Méltányossági kérelmek, egyéni tanrend, kreditátviteli és párhuzamos képzési kérelmek kezelése.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💳</div>
+                    <h3>Ösztöndíjak & Pénzügyek</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Tanulmányi és szociális ösztöndíjak folyósítási igazolása, önköltségi díjak számlázása.</p>
+                </div>
+            </div>
+
+            <!-- 3. KÉP ÉS BEMUTATÓ BLOKK -->
+            <div class="office-highlight-wrapper">
+                <div>
+                    <!-- 3. KÉP: Diákok együttműködés közben a könyvtárban / egyetemen -->
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" alt="Diákok és egyetemi élet" class="office-img">
+                </div>
+                <div>
+                    <h3 style="font-size: 1.8rem; color: var(--primary); margin-bottom: 1rem;">Elektronikus ügyintézés: gyors és kényelmes</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 1.2rem;">
+                        Tudta, hogy a legtöbb jogviszony-igazolás digitális aláírással ellátva közvetlenül a tanulmányi rendszeren keresztül (Neptun / KRÉTA) is letölthető? 
+                    </p>
+                    <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+                        Ha mégis személyes segítségre lenne szüksége, irodánk barátságos ügyintézői készséggel állnak rendelkezésére a hétfőtől péntekig tartó félfogadási időkben.
+                    </p>
+                    <a href="#kapcsolat" class="btn btn-outline">Elérhetőségek megtekintése</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- GYAKRAN ISMÉTELT KÉRDÉSEK (GYIK) -->
+        <section class="section-container" id="gyik">
+            <div class="section-header">
+                <h2>Gyakran Ismételt Kérdések</h2>
+                <p>Kattintson a kérdésre a válasz megtekintéséhez</p>
+            </div>
+
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Hogyan igényelhetek ideiglenes diákigazolványt?</span>
+                        <span>▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        Az ideiglenes diákigazolvány kiállításához először igényelnie kell a kormányablakban a NEK-adatlapot, majd az azonosítóval személyesen vagy a tanulmányi rendszeren keresztül kell benyújtania a kérelmet. Az igazolás 60 napig érvényes.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Mit tegyek, ha nem tudok eljönni a nyitvatartási időben?</span>
+                        <span>▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        Meghatalmazást adhat egy diáktársának vagy családtagjának, amelyben két tanú aláírásával feljogosítja őt az iratok átvételére. Emellett e-mailben is kérhet egyedi időpontot indokolt esetben.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Mennyi idő alatt készül el a jogviszony-igazolás?</span>
+                        <span>▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        A személyes ügyfélfogadás alatt azonnal kiállítjuk és lepecsételjük az igazolást. Elektronikus kérelem esetén 1-2 munkanapon belül letölthetővé válik a hitelesített PDF.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- LÁBLÉC & KAPCSOLAT -->
+    <footer id="kapcsolat">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>Tanulmányi Osztály</h4>
+                <p>Központi Oktatási és Hallgatói Szolgáltató Központ</p>
+                <p>1111 Budapest, Egyetem tér 1-3.</p>
+                <p>A épület, Földszint 12.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Elérhetőségek</h4>
+                <p>📞 Telefon: +36 (1) 456-7890</p>
+                <p>✉️ E-mail: to@iskola.hu</p>
+                <p>💬 Belső mellék: 1204 / 1205</p>
+            </div>
+            <div class="footer-column">
+                <h4>Gyorshivatkozások</h4>
+                <a href="#nyitvatartas">Heti Nyitvatartás</a>
+                <a href="#sorszam">Digitális Sorszámhúzás</a>
+                <a href="#gyik">Gyakran Ismételt Kérdések</a>
+                <a href="#">Tanulmányi Rendszer Belépés</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Tanulmányi és Oktatásszervezési Osztály. Minden jog fenntartva.</p>
+        </div>
+    </footer>
+
+    <!-- INTERAKTÍV JAVASCRIPT KÓD -->
+    <script>
+        // 1. DINAMIKUS NYITVATARTÁS ELLENŐRZŐ (ÉLŐ IDŐ ALAPJÁN)
+        function checkOpeningStatus() {
+            const now = new Date();
+            const day = now.getDay(); // 0: Vasárnap, 1: Hétfő ... 6: Szombat
+            const hour = now.getHours();
+            const minute = now.getMinutes();
+            const currentTime = hour + minute / 60;
+
+            const card = document.getElementById('statusCard');
+            const title = document.getElementById('statusTitle');
+            const subtitle = document.getElementById('statusSubtitle');
+
+            // Ma sorának kiemelése a táblázatban
+            const tableRows = document.querySelectorAll('#scheduleBody tr');
+            tableRows.forEach(row => {
+                if (parseInt(row.getAttribute('data-day')) === day) {
+                    row.classList.add('today-row');
+                }
+            });
+
+            // Nyitvatartási szabályok:
+            // Hétfő (1), Szerda (3), Péntek (5): 08:30 - 12:00
+            // Kedd (2): 13:00 - 16:30
+            // Csütörtök (4): Belső nap (nincs személyes)
+            // Szombat (6), Vasárnap (0): Zárva
+            let isOpen = false;
+            let nextInfo = "";
+
+            if (day === 1 || day === 3 || day === 5) {
+                if (currentTime >= 8.5 && currentTime < 12.0) {
+                    isOpen = true;
+                } else if (currentTime < 8.5) {
+                    nextInfo = "Nyitás ma 08:30-kor.";
+                } else {
+                    nextInfo = "A személyes ügyfélfogadás ma 12:00-kor befejeződött.";
+                }
+            } else if (day === 2) {
+                if (currentTime >= 13.0 && currentTime < 16.5) {
+                    isOpen = true;
+                } else if (currentTime < 13.0) {
+                    nextInfo = "Nyitás ma 13:00-kor.";
+                } else {
+                    nextInfo = "A mai személyes ügyfélfogadás befejeződött.";
+                }
+            } else if (day === 4) {
+                nextInfo = "Ma belső munkanap van (csak telefonos ügyintézés: 09:00 - 15:00).";
+            } else {
+                nextInfo = "Hétvégén a személyes ügyintézés szünetel. Nyitás: Hétfő 08:30.";
+            }
+
+            if (isOpen) {
+                card.className = "status-card status-open";
+                title.textContent = "🟢 Jelenleg NYITVA vagyunk";
+                title.style.color = "var(--success)";
+                subtitle.textContent = "Személyes ügyintézés folyamatban. Várjuk a 12-es szobában!";
+            } else {
+                card.className = "status-card status-closed";
+                title.textContent = "🔴 Jelenleg ZÁRVA vagyunk";
+                title.style.color = "var(--danger)";
+                subtitle.textContent = nextInfo;
+            }
+        }
+
+        // 2. DIGITÁLIS SORSZÁMHÚZÓ SZIMULÁTOR
+        let ticketCounter = 105;
+        function generateTicket() {
+            const name = document.getElementById('studentName').value;
+            const code = document.getElementById('studentCode').value;
+            const topic = document.getElementById('topic').value;
+            const resultBox = document.getElementById('ticketResult');
+
+            ticketCounter++;
+            const myTicket = `${topic}-${ticketCounter}`;
+            const waitMinutes = Math.floor(Math.random() * 8) + 4; // 4-12 perc
+
+            resultBox.style.display = 'block';
+            resultBox.innerHTML = `
+                <strong style="font-size: 1.1rem; display: block; margin-bottom: 5px;">🎉 Sikeres sorszámhúzás!</strong>
+                Kedves <strong>${name}</strong> (${code})!<br>
+                Az Ön sorszáma: <strong style="font-size: 1.4rem; color: #1e3a8a; display: inline-block; margin: 4px 0;">${myTicket}</strong><br>
+                Várható sorra kerülés: <strong>kb. ${waitMinutes} perc múlva</strong>.<br>
+                <em>Kérjük, figyelje a folyosói kijelzőt vagy az oldal tetején lévő számot!</em>
+            `;
+
+            // Űrlap ürítése
+            document.getElementById('studentName').value = '';
+            document.getElementById('studentCode').value = '';
+        }
+
+        // 3. VÉLETLENSZERŰ HÍVÓSZÁM VÁLTÓ SZIMULÁCIÓ
+        setInterval(() => {
+            const prefix = ["A", "B", "C"][Math.floor(Math.random() * 3)];
+            const randomNum = Math.floor(Math.random() * 20) + 95;
+            const display = document.getElementById('currentCalledNumber');
+            if (display) {
+                display.style.opacity = '0';
+                setTimeout(() => {
+                    display.innerText = `${prefix}-${randomNum}`;
+                    display.style.opacity = '1';
+                }, 400);
+            }
+        }, 12000);
+
+        // 4. GYIK LENYÍLÓ ACCORDION VEZÉRLÉS
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.parentElement;
+                const answer = item.querySelector('.faq-answer');
+                const isOpen = item.classList.contains('active');
+
+                // Összes többi becsukása
+                document.querySelectorAll('.faq-item').forEach(el => {
+                    el.classList.remove('active');
+                    el.querySelector('.faq-answer').style.maxHeight = null;
+                });
+
+                if (!isOpen) {
+                    item.classList.add('active');
+                    answer.style.maxHeight = answer.scrollHeight + "px";
+                }
+            });
+        });
+
+        // Inicializálás az oldal betöltésekor
+        window.addEventListener('DOMContentLoaded', () => {
+            checkOpeningStatus();
+        });
+    </script>
+</body>
+</html>
